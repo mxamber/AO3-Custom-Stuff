@@ -41,7 +41,7 @@
         for(element of parts) {
             element = element.replace(/[\(\)\|]*/gmi, "");
             element = element.trim();
-            if(names.indexOf(element) == -1 && element.length > 0) {
+            if(names.indexOf(element) == -1 && element.length > 0 && element != "the") {
                 names.push(element);
             }
         }
