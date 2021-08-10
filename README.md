@@ -1,5 +1,5 @@
 # AO3 Capitalisation Fix
-A userscript to fix the capitalisation of all-lowercase fanfictions on Archive Of Our Own (AO3).
+A userscript to fix the capitalisation of all-lowercase fanfictions on Archive Of Our Own (AO3). Don't know what a userscript is or how to run it? [I'll let Tampermonkey explain](https://www.tampermonkey.net).
 
 ## What it does do
 * capitalise the first word in a sentence
