@@ -61,7 +61,7 @@ Document queries fetch the kudos, hits, chapters, word count, etc from each sear
 ### How to options
 A bunch of variables are given at the top of the script, along with an explanation.
 
-### Footnotes
+## Footnotes
 1. `()|` and "the" are removed and the name is split along whitespaces to enable given name and surname to be detected without the other. Example: "Aang | The Avatar" will  register as names "Aang" and "Avatar", which will subsequently be capitalised in the text.
 2. If the character tag says "aang the avatar", then all, even correct, occurences of "Aang" or "Avatar" will be falsely "corrected" to "aang" and "avatar" respectively.
 3. May occur with text copy-pasted from writing software (Google Docs, Libre Office, etc) into AO3's rich text field.
