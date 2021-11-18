@@ -30,7 +30,7 @@
     **
     */
 
-    var fictext = document.querySelector("div.userstuff[role='article']");
+    var fictext = document.querySelector("div.userstuff:not(.content)");
 
     // read all the character names from the tags, remove () and | and split by whitespace
     // example: "Anakin Skywalker | Darth Vader (Star Wars)" becomes "Anakin, Skywalker, Darth, Vader, Star, Wars"
@@ -52,6 +52,7 @@
     Example: "Nico di Angelo", misspelled as "nico di angelo", replaced with "Nico di Angelo"
     */
     names.forEach(function(element) {
+        if(element.trim().toLowerCase() == "the") { return; }
         fictext.innerHTML = fictext.innerHTML.replaceAll(element.toLowerCase(), element);
     });
 
@@ -61,7 +62,8 @@
     // remove empty paragraphs
     if(REMOVE_EMPTY_PARAGRAPHS) {
         // remove all p elements which might or might not contain nested but empty strong or em tags and nbsp whitespaces
-        fictext.innerHTML = fictext.innerHTML.replaceAll(/<p>(<em>|<\/em>|<strong>|<\/strong>|\s*\n*|&nbsp;)*<\/p>/gmi, "");
+        fictext.innerHTML = fictext.innerHTML.replaceAll(/<p>(<em>|<\/em>|<strong>|<\/strong>|\s*\n*|<br>|&nbsp;)*<\/p>/gmi, "");
+        fictext.innerHTML = fictext.innerHTML.replaceAll(/<p><br\/?>(.*)(?=<\/p>)/gsi,"<p>$1</p>");
     }
 
     // function used for replacing parts of the fic text via regex
