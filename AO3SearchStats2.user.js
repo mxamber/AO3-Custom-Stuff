@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AO3SearchStats2
 // @namespace    http://tampermonkey.net/
-// @version      2.0.1
+// @version      2.0.2
 // @description  Additional information in AO3 search results
 // @author       mxamber
 // @match        https://archiveofourown.org/*
@@ -47,8 +47,13 @@
 
     let fics = document.querySelectorAll("dl.stats");
     fics.forEach(element => {
-        let title = element.parentNode.querySelector(".header h4 a").innerText;
-        console.log(`[AO3SeachStatis2] now processing: "${title}"`);
+        try {
+            let title = element.parentNode.querySelector(".header h4 a").innerText;
+            console.log(`[AO3SeachStatis2] now processing: "${title}"`);
+        } catch (e) {
+            let title = document.querySelector("h2.title").innerText;
+            console.log(`[AO3SeachStatis2] current fic: "${title}"`);
+        }
 
         // fetch word count. if for some reason NaN, substitute 0
         let words = parseInt(element.querySelector("dd.words").innerText.replace(",", ""));
